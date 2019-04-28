@@ -73,7 +73,8 @@ export default {
     // 发送消息
     inputSend (e) {
       if ((e.ctrlKey && e.keyCode == 13) || (e.ctrlKey && e.keyCode == 108)) {
-        this.sendValue = this.HTMLDecode(this.formatInputCon())
+        // 提交的时候使用正则替换，将br换位换行符，不能使用innertext转，有兼容性问题
+        this.sendValue = this.formatInputCon().replace(/<br>/g, '\r\n')
       } 
     },
 
